@@ -7,7 +7,6 @@ from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
 from langchain_groq import ChatGroq
 
-
 # Load environment variables from .env file
 load_dotenv()
 
