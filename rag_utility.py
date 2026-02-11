@@ -1,11 +1,13 @@
 import os
 from dotenv import load_dotenv
 
-from langchain_community.document_loaders import UnstructuredPDFLoader
+from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
 from langchain_groq import ChatGroq
+from langchain.chains import RetrievalQA
+
 
 # Load environment variables from .env file
 load_dotenv()
@@ -23,8 +25,8 @@ llm = ChatGroq(
 
 
 def process_document_to_chroma_db(file_name):
-    # Load the PDF document using UnstructuredPDFLoader
-    loader = UnstructuredPDFLoader(f"{working_dir}/{file_name}")
+    # Load the PDF document using PyPDFLoader (no OCR / CV deps)
+    loader = PyPDFLoader(f"{working_dir}/{file_name}")
     documents = loader.load()
     # Split the text into chunks for embedding
     text_splitter = RecursiveCharacterTextSplitter(
