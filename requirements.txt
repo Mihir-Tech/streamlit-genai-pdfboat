@@ -3,6 +3,7 @@ streamlit
 sentence-transformers
 langchain-community
 langchain
+langchain-core
 langchain-huggingface
 langchain-text-splitters
 langchain-chroma
